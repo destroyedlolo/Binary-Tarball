@@ -10,3 +10,17 @@ My aim is to got a working *basic* system that can stick on a 1Gb SD card with s
 * **script.bin** : original hardware configuration took from Android Nand
 * **uEnv.txt** : additionnal kernel parameters example ; here, disabling screen blanking.
 * **3.4.103+** : SunXI kernel
+
+## Installation
+
+## Post installation
+
+* Change root password (Yes ! **CHANGE IT**)
+* In order to avoid uneeded write access to your SDcard, add following line /etc/fstab as following
+```
+none                    /var/tmp        tmpfs           defaults        0 0
+none                    /tmp            tmpfs           defaults        0 0
+```
+*I forgot it, oups :(*
+* Have you modified root password ?
+* mount all or reboot
