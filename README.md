@@ -30,7 +30,7 @@ cat <<EOT | sfdisk --in-order -L -uM /dev/sdb
 mkfs.vfat /dev/sdb1
 mkfs.ext4 /dev/sdb2
 ```
-Note : sdb1 may be ext2 partition as well.
+Note : sdb1 may be an ext2 partition as well.
 
 ### Feed boot partition
 In **sdb1** copy :
