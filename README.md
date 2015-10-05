@@ -12,10 +12,42 @@ My aim is to got a working *basic* system that can stick on a 1Gb SD card with s
 * **3.4.103+** : SunXI kernel
 
 ## Installation
+Providing your SDCart is mounted as **/dev/sdb**
+
+(**Caution : ALL DATA WILL BE ERASED**)
+### Boot
+```
+cd 3.4.103+/bootloader/
+dd if=u-boot-sunxi-with-spl.bin of=/dev/sdb bs=1024 seek=8
+```
+### Partition your card
+```
+cat <<EOT | sfdisk --in-order -L -uM /dev/sdb
+> 1,16,c
+> ,,L
+> EOT
+
+mkfs.vfat /dev/sdb1
+mkfs.ext4 /dev/sdb2
+```
+Note : sdb1 may be ext2 partition as well.
+
+### Feed boot partition
+In **sdb1** copy :
+* **script.bin**
+* **uEnv.txt** and customize it if needed (you may remove this file if you don't have to add custom options)
+* **3.4.103+/uImage**
+
+### Feed root partition
+* extract **rootfs.tar.xz** in **/dev/sdb2**
+* in newly created **lib/modules/**, extract **3.4.103+/modules.tar.xz**
+
+### boot
+Unmount your sdcard, put it on your tablet and ... boot.
 
 ## Post installation
 
-* Change root password (Yes ! **CHANGE IT**)
+* Change root password (Yes ! **CHANGE IT**) : the defaut one is *root*
 * In order to avoid uneeded write access to your SDcard, add following line /etc/fstab as following (*I forgot it, oups :(*)
 ```
 none                    /var/tmp        tmpfs           defaults        0 0
