@@ -16,11 +16,10 @@ My aim is to got a working *basic* system that can stick on a 1Gb SD card with s
 ## Post installation
 
 * Change root password (Yes ! **CHANGE IT**)
-* In order to avoid uneeded write access to your SDcard, add following line /etc/fstab as following
+* In order to avoid uneeded write access to your SDcard, add following line /etc/fstab as following (*I forgot it, oups :(*)
 ```
 none                    /var/tmp        tmpfs           defaults        0 0
 none                    /tmp            tmpfs           defaults        0 0
 ```
-*I forgot it, oups :(*
 * Have you modified root password ?
 * mount all or reboot
