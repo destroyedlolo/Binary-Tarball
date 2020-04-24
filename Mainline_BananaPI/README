@@ -1,0 +1,24 @@
+This directory contains binary bundles to create a workable bootstrap system for BananaPI with mainline kernel and almost recent (at the time of writing) stage3
+
+Notez bien : No password for root : Set one !
+
+File systems :
+
+- boot partition on SD's p1
+- system on SD's p2
+
+An hard disk as sda, 
+- swap as sda1
+- ext? (what you prefer) on sd2 that will be mounted as /mnt/sata
+
+At system boot, following FS will be mounted :
+- /mnt/sata/var2 -> /var
+- /mnt/sata/home -> /home
+- /mnt/sata/portage -> /usr/portage
+- /mnt/sata/src -> /usr/src
+
+/tmp and /var/tmp as tmpfs
+
+The goal with to have a system without writing to it's SD (but system update)
+
+Notez-bien : avoid direct root login or 'su -' to avoid root's history writing as well
